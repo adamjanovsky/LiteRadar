@@ -21,7 +21,7 @@
 
 
 import sys
-import shutil
+from shutil import rmtree
 from _settings import *
 import litedextree
 import dex_parser
@@ -78,8 +78,9 @@ class LibRadarLite(object):
     def __del__(self):
         # Delete dex file
         if CLEAN_WORKSPACE >= 3:
-            for dex_name in self.dex_names:
-                shutil.rmtree(os.path.dirname(dex_name))
+            if len(self.dex_names) > 0:
+                rmtree(os.path.dirname(self.dex_names[0]))
+
 
     def unzip(self):
         # If it is a valid file
