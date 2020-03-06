@@ -181,7 +181,7 @@ class LibRadarLite(object):
 
     def extract_dex(self, dex_name, return_data, lock):
         _, filename = os.path.split(dex_name)
-        print("Processing : " + filename + "...")
+        #print("Processing : " + filename + "...")
         current_dex = dex_parser.DexFile(dex_name)
         self.dex_objects.append(current_dex)
         pass
@@ -204,7 +204,7 @@ class LibRadarLite(object):
             data = [class_name, weight, raw_sha256, permission_list]
             return_data.append(data)
 
-        print(filename + " done.")
+        #print(filename + " done.")
 
     def prepare_dex_extraction(self):
         start_time = time.time()
@@ -231,7 +231,7 @@ class LibRadarLite(object):
         for data in return_data:
             self.tree.insert(package_name=data[0], weight=data[1], sha256=data[2], permission_list=data[3])
 
-        print("%s seconds" % (time.time() - start_time))
+        #print("%s seconds" % (time.time() - start_time))
         return 0
 
     def analyse(self):
